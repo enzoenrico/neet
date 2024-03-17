@@ -7,15 +7,23 @@ function App() {
 
   const [todos, setTodos] = useState<todo[]>([
     { id: '1', todo: 'amongus', done: false },
-    { id: '2', todo: 'boals', done: false }
+    { id: '2', todo: 'boals', done: true }
   ])
+
   const [todo, setTodo] = useState<string>('')
 
-  const input = document.querySelector('input')
+  const input = document.querySelector<HTMLInputElement>('input')
+
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      console.log(e.key)
+      newTodo()
+    }
+  }
 
   const newTodo = () => {
     if (input.value === '') {
-      alert("Please enter a todo")
+      // alert("Please enter a todo")
       return
     }
     const t = { id: Math.floor(Math.random() * 10).toString(), todo: todo, done: false }
@@ -24,11 +32,13 @@ function App() {
     input.value = ''
   }
 
-  const check = (e) => {
+  const check = (e: Event) => {
     console.log(e.target.id)
     setTodos(todos.map((t) => {
       if (t.id === e.target.id) {
-        e.target.style.textDecoration = t.done ? 'none' : 'line-through'
+        const parent = document.getElementById<HTMLDivElement>(e.target.id)?.closest('.todo')
+        // e.target.classList.toggle('done')
+        parent?.classList.toggle('done')
         return { ...t, done: !t.done }
       } else {
         return t
@@ -39,23 +49,25 @@ function App() {
 
   return (
     <div className='main'>
-      <input type="text" onChange={(e) => setTodo(e.target.value)} />
-      <button type="button" onClick={newTodo}></button>
+      <div className="newtodo">
+        <input type="text" onChange={(e) => setTodo(e.target.value)} placeholder='type here' onKeyDown={handleEnter} />
+        <button type="button" onClick={newTodo}>Add Todo</button>
+      </div>
 
-      <table className='todos'>
-        <td>
-          <td>Todos</td>
-        </td>
-        <tr>
-          {todos.map((e) => {
-            return (
-              <div id={e.id} className='todo' onClick={check}>
-                <p>{e.todo}</p>
-                {e.done ? 'done' : 'not done'}
+      <div className="todo-list">
+        {todos.map((e) => {
+          return (
+            <div id={e.id} className={e.done ? 'todo done' : 'todo'} onClick={check}>
+              <div className="content ">
+                <p id={e.id} className='task-wrapper'>
+                  <p id={e.id} className='task-content'>{e.todo}</p>
+                </p>
+                <p id={e.id} className='task-id'>TSK-{e.id}</p>
               </div>
-            )
-          })}</tr>
-      </table>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
