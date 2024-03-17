@@ -19,7 +19,7 @@ body {
   flex-direction: column;
 }
 
-.todos{
+.todos {
   width: 100%;
   max-width: 500px;
   margin-top: 20px;
@@ -27,7 +27,7 @@ body {
   border: 1px solid black;
 }
 
-.todos > * > *{
+.todos>*>* {
   border: 1px solid #0014dc;
   margin: 0.2rem;
   border-radius: 1rem;
@@ -35,8 +35,25 @@ body {
   padding: 0.2rem;
 }
 
-input{
+input {
   background-color: white;
   color: black;
   padding: 0.2rem;
+}
+
+.todo {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  color: black;
+}
+
+.todo > *{
+  margin: 0.5rem;
 }
