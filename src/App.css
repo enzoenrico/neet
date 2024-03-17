@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.main {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.todos{
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+  padding: 0.2rem;
+  border: 1px solid black;
+}
+
+.todos > * > *{
+  border: 1px solid #0014dc;
+  margin: 0.2rem;
+  border-radius: 1rem;
+  display: flex;
+  padding: 0.2rem;
+}
+
+input{
+  background-color: white;
+  color: black;
+  padding: 0.2rem;
+}
