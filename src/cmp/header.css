@@ -1,0 +1,26 @@
+header{
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header > *{
+    user-select: none;
+}
+
+header > p{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+header > .googlebutton{
+    background-color: transparent;
+    border: 2px solid #0014dc;
+    padding: 0;
+}
